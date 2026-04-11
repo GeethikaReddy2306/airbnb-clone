@@ -13,5 +13,5 @@ const listingSchema=new Schema({
       location:String,
       country:String
 })
-const Listing=mongoose.model('Listing',listingSchema)
-module.exports=Listing;
+const listing=mongoose.model('listing',listingSchema)
+module.exports=listing;

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>wonderlist</title>
+</head>
+<body>
+        <h1>all listings</h1>
+        <%for(let data of allData){%>
+                <li>
+                <ol>title:<%=data.title %></ol>
+                <ol>description:<%=data.description %></ol>
+                <ol><img src="<%=data.image.url %>"></ol>
+                <ol>price: <%=data.price %> </ol>
+                 <ol> location: <%=data.location%> </ol>
+                  <ol>country <%=data.country %> </ol>
+ </li>
+                <%}%>
+</body>
+</html>
