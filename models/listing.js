@@ -5,13 +5,13 @@ const listingSchema=new Schema({
         type:String,
         required:true},
       description:String,
-      image:
-      {type:String,
-        set:(v)=>v===""?"default link":v,
-      },
+     image: {
+  filename: String,
+  url: String
+},
       price:Number,
       location:String,
       country:String
 })
-const listing=mongoose.model('listing',listingSchema)
-module.exports=listing;
+const Listing=mongoose.model('Listing',listingSchema)
+module.exports=Listing;
