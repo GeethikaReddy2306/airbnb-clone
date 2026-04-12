@@ -1,0 +1,14 @@
+<% layout('layouts/boilerplate') %>
+<body>
+
+<h1><%= place.title %></h1>
+
+<p><%= place.description %></p>
+
+<p>₹ <%= place.price %></p>
+
+<p><%= place.location %>, <%= place.country %></p>
+
+<a href="/listing/<%= place._id %>/edit">Edit</a>
+
+</body>
