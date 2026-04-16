@@ -1,14 +1,43 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="/">Wanderlust</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+<nav class="navbar navbar-expand-lg sticky-top airbnb-navbar">
+  <div class="container app-container">
+    <a class="navbar-brand d-flex align-items-center gap-2" href="/listing">
+      <i class="fa-solid fa-house-chimney-window"></i>
+      <span>Wanderlust</span>
+    </a>
+
+    <button
+      class="navbar-toggler border-0 shadow-none"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-      <div class="navbar-nav">
-        <a class="nav-link active" aria-current="page" href="/listing">Listings</a>
-        <a class="nav-link" href="/listing/new">Create</a>
-        <a class="nav-link" href="/">Home</a>
+      <div class="mx-auto my-3 my-lg-0 w-100 d-flex justify-content-center">
+        <form class="search-pill d-flex align-items-center" role="search">
+          <span class="search-pill__item">Anywhere</span>
+          <span class="search-pill__divider"></span>
+          <span class="search-pill__item">Any week</span>
+          <span class="search-pill__divider"></span>
+          <span class="search-pill__item text-secondary">Add guests</span>
+          <button type="button" class="search-pill__icon" aria-label="Search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+        </form>
+      </div>
+
+      <div class="d-flex flex-column flex-lg-row align-items-stretch align-items-lg-center gap-3 ms-lg-3">
+        <a class="nav-link fw-medium" href="/listing">Stays</a>
+        <a class="btn btn-airbnb-outline" href="/listing/new">Create Listing</a>
+        <button type="button" class="profile-menu ms-lg-1">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-circle-user"></i>
+        </button>
       </div>
     </div>
   </div>

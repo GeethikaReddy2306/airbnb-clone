@@ -1,9 +1,60 @@
 <% layout('layouts/boilerplate') %>
-        <button><a href="/listing/new">create new</a></button>
-        <%for(let data of allData){%>
-               <ul>
-       <li><a href="/listing/<%= data._id %>"><%=data.title %></a></li>
-         </ul>
- 
-        <%}%>
+<section class="mb-4">
+  <div class="row align-items-center g-3">
+    <div class="col-12 col-lg-8">
+      <span class="eyebrow-text">Curated stays</span>
+      <h1 class="page-title mt-2 mb-2">Explore places that feel like Airbnb.</h1>
+      <p class="page-subtitle mb-0">Browse modern homes, cozy retreats, and memorable stays designed for your next trip.</p>
+    </div>
+    <div class="col-12 col-lg-4">
+      <div class="d-flex justify-content-lg-end">
+        <a href="/listing/new" class="btn btn-airbnb px-4 py-3">Create New Listing</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="mt-4 mb-4">
+  <div class="row g-4">
+    <% if (allData.length === 0) { %>
+      <div class="col-12">
+        <div class="empty-state-card text-center">
+          <h2 class="h4 mb-2">No stays available yet</h2>
+          <p class="text-secondary mb-4">Start by adding your first listing and showcase it with a beautiful cover image.</p>
+          <a href="/listing/new" class="btn btn-airbnb px-4">Add a Listing</a>
+        </div>
+      </div>
+    <% } %>
+
+    <% for (let data of allData) { %>
+      <div class="col-12 col-sm-6 col-md-4 col-lg-3">
+        <a href="/listing/<%= data._id %>" class="text-decoration-none text-reset d-block h-100">
+          <article class="card listing-card h-100 border-0">
+            <div class="listing-card__media">
+              <% if (data.image && data.image.url) { %>
+                <img src="<%= data.image.url %>" class="card-img-top listing-card__image" alt="<%= data.title %>">
+              <% } else { %>
+                <div class="listing-card__placeholder d-flex align-items-center justify-content-center">
+                  <i class="fa-regular fa-image"></i>
+                </div>
+              <% } %>
+              <div class="listing-card__rating">
+                <i class="fa-solid fa-star"></i>
+                <span>4.8</span>
+              </div>
+            </div>
+
+            <div class="card-body p-3 p-lg-4 d-flex flex-column">
+              <div class="d-flex align-items-start justify-content-between gap-3 mb-2">
+                <h3 class="listing-title mb-0"><%= data.title %></h3>
+              </div>
+              <p class="listing-location mb-2"><%= data.location %>, <%= data.country %></p>
+              <p class="listing-price mb-0">₹<%= data.price %> <span class="listing-price__suffix">night</span></p>
+            </div>
+          </article>
+        </a>
+      </div>
+    <% } %>
+  </div>
+</section>
 
