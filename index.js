@@ -24,10 +24,17 @@ app.get('/listing/new',async(req,res)=>{
    res.render('listing/new')
 })
 app.post('/listing/new',async(req,res)=>{
-  let{title,description,price,location,country}=req.body;
+  let{title,description,price,location,country,imageUrl}=req.body;
   let data=new listing({
     title,
-    description,price,location,country
+    description,
+    price,
+    location,
+    country,
+    image: {
+      url: imageUrl,
+      filename: title
+    }
   })
   
   await data.save();
@@ -41,14 +48,18 @@ app.get('/listing/:id/edit', async (req, res) => {
 });
 app.put('/listing/:id', async (req, res) => {
   let { id } = req.params;
-  let { title, description, price, location, country } = req.body;
+  let { title, description, price, location, country, imageUrl } = req.body;
 
   await listing.findByIdAndUpdate(id, {
     title,
     description,
     price,
     location,
-    country
+    country,
+    image: {
+      url: imageUrl,
+      filename: title
+    }
   });
 
   res.redirect('/listing');
@@ -62,5 +73,10 @@ app.get('/listing/:id',async(req,res)=>{
   let {id}=req.params;
   const place = await listing.findById(id);
   res.render('listing/show',{place})
+})
+app.delete('/listing/:id', async (req, res) => {
+  let { id } = req.params;
+  await listing.findByIdAndDelete(id);
+  res.redirect('/listing');
 })
 app.listen(port,()=>{console.log('server is running successfully')})
